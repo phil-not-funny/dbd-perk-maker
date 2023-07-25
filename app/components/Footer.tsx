@@ -1,10 +1,9 @@
 import Logo from "./Logo";
-import { Link } from "react-router-dom";
 import Grid from "./Grid";
 
 export default function Footer() {
   return (
-    <div className="mt-auto bg-dark flex flex-col p-2 pt-12 items-center">
+    <div className="mt-auto bg-blackLight text-white flex flex-col p-2 py-12 items-center">
       <Grid center chain>
         <div className="flex justify-start">
           <div className="mr-5">
@@ -29,7 +28,7 @@ export default function Footer() {
               <div>
                 <a
                   href="mailto:prox-real@outlook.com"
-                  className="text-dimmed font-cafeLight transition ease-in-out duration-150 hover:text-primaryLight"
+                  className="text-dimmed  transition ease-in-out duration-150 hover:text-primaryLight"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -59,41 +58,10 @@ export default function Footer() {
                 <a
                   href="https://www.instagram.com/not_funny75"
                   target="_blank"
-                  className="text-dimmed font-cafeLight transition ease-in-out duration-150 hover:text-primaryLight"
+                  className="text-dimmed  transition ease-in-out duration-150 hover:text-primaryLight"
                   rel="noreferrer"
                 >
                   {"instagram.com/not_funny75"}
-                </a>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div>
-              <div className="flex items-center justify-start">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 text-dimmed mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                  />
-                </svg>
-                <span className="text-primaryLight mt-0.5">GitHub: </span>
-              </div>
-              <div>
-                <a
-                  href="https://github.com/phil-not-funny"
-                  className="text-dimmed font-cafeLight transition ease-in-out duration-150 hover:text-primaryLight"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {"github.com/phil-not-funny"}
                 </a>
               </div>
             </div>
@@ -103,17 +71,69 @@ export default function Footer() {
           <Logo />
         </div>
         <div>
-          <div className="flex justify-center lg:justify-end">
-            <Link
-              to="/privacy-policy"
-              className="underline-offset-1 hover:text-primaryLight text-dimmed transition ease-in-out duration-150"
-            >
-              Privacy Policy
-            </Link>
+          <div>
+            <div className="flex items-center justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-dimmed mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+              <span className="text-primaryLight mt-0.5">GitHub: </span>
+            </div>
+            <div>
+              <a
+                href="https://github.com/phil-not-funny"
+                className="text-dimmed  transition ease-in-out duration-150 hover:text-primaryLight"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {"github.com/phil-not-funny"}
+              </a>
+            </div>
+          </div>
+          <div className="mt-2">
+            <div className="flex items-center justify-start">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6 text-dimmed mr-2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+                />
+              </svg>
+
+              <span className="text-primaryLight mt-0.5">
+                Inspired by DeadByDaylight
+              </span>
+            </div>
+            <div>
+              <a
+                href="https://deadbydaylight.com"
+                className="text-dimmed transition ease-in-out duration-150 hover:text-primaryLight"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {"deadbydaylight.com"}
+              </a>
+            </div>
           </div>
         </div>
       </Grid>
-      <p className="font-cafeLight text-dimmed text-center w-full pt-3">&copy; Proxreal, 2022</p>
     </div>
   );
 }

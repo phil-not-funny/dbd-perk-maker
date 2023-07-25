@@ -27,6 +27,7 @@ module.exports = {
       teachable: "#CE4703",
       dark: "#1F1F1F",
       hoverDark: "#403f3f",
+      blackLight: "#1a1919",
       description: "#E2CE97",
       ...colors
     }
