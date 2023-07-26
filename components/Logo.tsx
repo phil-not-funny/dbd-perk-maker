@@ -1,4 +1,4 @@
-import * as logo from "../../public/deadbydaylightlogo.png";
+import * as logo from "../public/deadbydaylightlogo.png";
 import React from "react";
 
 interface Props {
