@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,14 @@ export default function RootLayout({
         <div className="font-roboto">
           <Navbar />
           <div className="bg-gradient-to-b from-hoverDark to-blackLight min-h-screen p-4 flex flex-row justify-center">
-            <div className="max-w-7xl">{children}</div>
+            <motion.div
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 1, scale: 1, x: "100" }}
+              transition={{ duration: 1, type: "spring", stiffness: 20 }}
+              className="max-w-7xl"
+            >
+              {children}
+            </motion.div>
           </div>
           <Footer />
         </div>
