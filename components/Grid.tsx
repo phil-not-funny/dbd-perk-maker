@@ -6,12 +6,13 @@ interface Props {
   border?: boolean;
   chain?: boolean;
   cols?: number;
+  childrenClass?: string;
 }
 
-const Grid: React.FC<Props> = ({ children, center, border, chain, cols }) => {
+const Grid: React.FC<Props> = ({ children, center, border, chain, cols, childrenClass }) => {
   return (
     <ul
-      className={`grid gap-6 grid-cols-1 h-full ${
+      className={`grid gap-6 grid-cols-1 ${
         !cols || cols === 3
           ? `${!chain && "sm:grid-cols-2"} lg:grid-cols-3`
           : cols === 2
@@ -34,7 +35,7 @@ const Grid: React.FC<Props> = ({ children, center, border, chain, cols }) => {
           <div
             className={`w-full h-full ${
               center && "flex items-center justify-center"
-            } p-2 space-x-6 text-cafe`}
+            } p-2 space-x-6 text-cafe ${childrenClass}`}
           >
             {child}
           </div>

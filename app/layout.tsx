@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
+import Spacing from "../components/Spacing";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="font-roboto">
-          <Navbar />
+          <Spacing space={20} className="!bg-hoverDark" />
           <div className="bg-gradient-to-b from-hoverDark to-blackLight min-h-screen p-4 flex flex-row justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 1 }}
