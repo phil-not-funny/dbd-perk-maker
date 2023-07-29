@@ -17,7 +17,7 @@ const PerkCreator: React.FC = () => {
     <Spacing space={12} />
     <Grid cols={3}>
       <Perk type={perkType} name="testperk 1" />
-      <Perk type={perkType} name="testperk 2" />
+      <Perk type={perkType} name="questionable design choices" />
     </Grid>
   </>
 };

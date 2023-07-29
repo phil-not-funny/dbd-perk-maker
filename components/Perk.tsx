@@ -2,9 +2,13 @@ import React, { useState } from "react";
 
 import very_rare_icon from "@/public/very_rare_icon.png";
 import very_rare_title from "@/public/vary_rare_title.png";
+
 import { Text } from "./RichText";
 import IconButton from "./IconButton";
 import TextArea from "./TextArea";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import MarkdownDisplay from "./MarkdownDisplay";
 
 interface Props {
   type?: "very_rare" | "teachable";
@@ -17,13 +21,15 @@ const Perk: React.FC<Props> = ({ type, name, owner }) => {
   const [description, setDescription] = useState<string>("");
 
   return (
+    <>
+    <img src={very_rare_icon.src} className="mx-auto h-32 w-auto mb-2" />
     <div className="bg-dark border-blackLight ">
       <div className="relative">
         <Text
           uppercase
-          defaultSize="2xl"
+          defaultSize="xl"
           bold
-          className="absolute top-6 left-4 !text-beigeLight/80 !text-2xl"
+          className="absolute top-6 left-4 !text-beigeLight/80 !text-xl"
         >
           {name}
         </Text>
@@ -38,7 +44,7 @@ const Perk: React.FC<Props> = ({ type, name, owner }) => {
             value={description}
           />
         ) : (
-          <div className="p-4 text-white">{description}</div>
+          <MarkdownDisplay value={description} />
         )}
       </div>
       <IconButton
@@ -78,6 +84,7 @@ const Perk: React.FC<Props> = ({ type, name, owner }) => {
         }
       />
     </div>
+    </>
   );
 };
 

@@ -6,3 +6,28 @@
   font-family: Roboto;
   src: url("../public/Roboto.ttf") format("truetype");
 }
+
+.markdown > * {
+  all: revert;
+}
+
+.uncommon {
+  color: rgb(227, 204, 54);
+  font-weight: 600;
+}
+
+.rare {
+  color: rgb(28, 122, 35);
+  font-weight: 600;
+
+}
+
+.veryrare {
+  color: rgb(155, 75, 184);
+  font-weight: 600;
+}
+
+.teachable {
+  color: rgb(206, 71, 3);
+  font-weight: 600;
+}

@@ -20,9 +20,9 @@ module.exports = {
     },
     colors: {
       common: "#523D2B",
-      uncommon: "#C19F30",
+      uncommon: "#e3cc36",
       rare: "#1C7A23",
-      veryrare: "68307C",
+      veryrare: "#9C4CB9",
       iridescent: "#BB0C40",
       teachable: "#CE4703",
       dark: "#1F1F1F",
