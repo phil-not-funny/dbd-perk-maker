@@ -24,8 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="font-roboto">
-          <Spacing space={20} className="!bg-hoverDark" />
-          <div className="bg-gradient-to-b from-hoverDark to-blackLight min-h-screen p-4 flex flex-row justify-center">
+          <div className="bg-gradient-to-b from-hoverDark to-blackLight min-h-screen p-4 flex flex-row justify-center pt-20">
             <motion.div
               initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: 1, scale: 1, x: "100" }}

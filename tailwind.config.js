@@ -29,6 +29,8 @@ module.exports = {
       hoverDark: "#403f3f",
       blackLight: "#1a1919",
       description: "#E2CE97",
+      beige: "#E2CE97",
+      beigeLight: "#FFFAEB",
       ...colors
     }
   },
