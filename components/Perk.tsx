@@ -9,23 +9,26 @@ import TextArea from "./TextArea";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import MarkdownDisplay from "./MarkdownDisplay";
+import SimpleInput from "./SimpleInput";
 
 interface Props {
   type?: "very_rare" | "teachable";
-  name?: string;
   owner?: string;
 }
 
-const Perk: React.FC<Props> = ({ type, name, owner }) => {
+const Perk: React.FC<Props> = ({ type, owner }) => {
   const [editing, setEditing] = useState<boolean>(true);
   const [description, setDescription] = useState<string>("");
+  const [name, setName] = useState<string>("perkname")
+
 
   return (
     <>
     <img src={very_rare_icon.src} className="mx-auto h-32 w-auto mb-2" />
     <div className="bg-dark border-blackLight ">
       <div className="relative">
-        <Text
+        {
+          editing ? <SimpleInput value={name} onChange={(value) => setName(value)} className="absolute top-6 left-4 uppercase font-semibold" /> : <Text
           uppercase
           defaultSize="xl"
           bold
@@ -33,6 +36,7 @@ const Perk: React.FC<Props> = ({ type, name, owner }) => {
         >
           {name}
         </Text>
+        }
         <img src={very_rare_title.src} className="w-full h-auto" />
       </div>
       <div className="bg-blackLight">
@@ -42,6 +46,7 @@ const Perk: React.FC<Props> = ({ type, name, owner }) => {
             rows={20}
             className="resize-none !p-4"
             value={description}
+            placeholder="Design your Perk Description here"
           />
         ) : (
           <MarkdownDisplay value={description} />

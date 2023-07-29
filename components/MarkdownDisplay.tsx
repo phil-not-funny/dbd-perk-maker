@@ -13,6 +13,8 @@ const MarkdownDisplay: React.FC<{ value: string }> = ({ value }) => {
         "blockquote",
         "span",
         "p",
+        "ul",
+        "li"
       ]}
       components={{
         blockquote: ({ node, ...props }) => (
@@ -21,6 +23,7 @@ const MarkdownDisplay: React.FC<{ value: string }> = ({ value }) => {
         span: ({ node, ...props }) => (
           <span className={`!text-${props.className}`} {...props} />
         ),
+        li: ({node, ...props}) => <li className="relative pl-2 mt-0.5"><span className="absolute top-0 left-0">{'- '}</span><span className="ml-2 inline-block leading-tight">{props.children}</span></li>,
       }}
       rehypePlugins={[rehypeRaw]}
     >
