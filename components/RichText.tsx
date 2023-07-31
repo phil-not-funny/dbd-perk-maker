@@ -56,7 +56,7 @@ export const Heading: React.FC<HeadingProps> = ({
   className = ''
 }) => {
   return (
-    <h1 className={`text-center text-white tracking-wider sm:tracking-widest font-semibold text-${defaultSize} sm:text-${wideScreenSize} ${className}`}>
+    <h1 className={`text-center text-white tracking-wider sm:tracking-widest font-semibold text-${defaultSize} sm:text-${wideScreenSize} ${uppercase ? 'uppercase' : ''} ${className}`}>
       {children}
     </h1>
   );

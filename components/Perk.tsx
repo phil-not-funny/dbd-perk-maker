@@ -13,17 +13,20 @@ import SimpleInput from "./SimpleInput";
 
 interface Props {
   type?: "very_rare" | "teachable";
-  owner?: string;
+  className?: string;
+  defaultName?: string;
+  defaultDescription?: string;
+  defaultShowcase?: boolean;
 }
 
-const Perk: React.FC<Props> = ({ type, owner }) => {
-  const [editing, setEditing] = useState<boolean>(true);
-  const [description, setDescription] = useState<string>("");
-  const [name, setName] = useState<string>("perkname")
+const Perk: React.FC<Props> = ({ type, className, defaultName = "perkname", defaultDescription = "", defaultShowcase = false }) => {
+  const [editing, setEditing] = useState<boolean>(!defaultShowcase);
+  const [description, setDescription] = useState<string>(defaultDescription);
+  const [name, setName] = useState<string>(defaultName)
 
 
   return (
-    <>
+    <div className={className}>
     <img src={very_rare_icon.src} className="mx-auto h-32 w-auto mb-2" />
     <div className="bg-dark border-blackLight ">
       <div className="relative">
@@ -89,7 +92,7 @@ const Perk: React.FC<Props> = ({ type, owner }) => {
         }
       />
     </div>
-    </>
+    </div>
   );
 };
 

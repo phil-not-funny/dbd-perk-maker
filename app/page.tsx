@@ -5,6 +5,7 @@ import { Heading, Text } from "@/components/RichText";
 import Grid from "@/components/Grid";
 import CardButton from "@/components/CardButton";
 import dbdfont from "@/public/deadbydaylightfont.png";
+import Link from "@/node_modules/next/link";
 
 export default function Home() {
   return (
@@ -18,6 +19,8 @@ export default function Home() {
         <CardButton href="/creator/killer" title="Killer Creator" description="Create a Killer Power and three Perks. Only applies to Killer." className="h-48" />
         <CardButton href="/creator/icon" title="Icon Creator" description="Create a single Dead By Daylight icon for killer Power or Perks. No matter if Survivor or Killer." className="h-48" />
       </Grid>
+      <Spacing space={24} />
+      <Link href="/help"><Text center defaultSize="lg" wideScreenSize="xl" className="hover:underline hover:underline-offset-2 transition-all duration-150 ease-in-out">Need help designing perks?</Text></Link>
     </>
   );
 }
