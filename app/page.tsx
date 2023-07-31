@@ -10,7 +10,7 @@ import Link from "@/node_modules/next/link";
 export default function Home() {
   return (
     <>
-      <img src={dbdfont.src} className="mx-auto h-36 w-auto" />
+      <img src={dbdfont.src} className="mx-auto h-14 sm:h-24 md:h-36 w-auto" />
       <Heading uppercase defaultSize="3xl" wideScreenSize="4xl" className="text-3xl sm:text-4xl">PERKMAKER</Heading>
       <Spacing space={24} />
       <Grid cols={4}>

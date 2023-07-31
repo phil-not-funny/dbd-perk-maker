@@ -14,14 +14,14 @@ This is a **fat text**<br/>
 This is a _cursive text_<br/>
 If you haven't noticed, these are line breaks:<br/><br/>
 Advanced Markdown:
-> This makes a blockquote (at the end of Dbd Perks)
+> This makes a blockquote (used at the end of Dbd Perks)
 
-^ End by two [Enter]<br/>
+^ End with two [Enter]<br/>
 Here's a List:
 - Item no.1
 - Item no.2<br/>Aligns in next line
 
-<br/>^ End by two [Enter]<br/>
+^ End with two [Enter]<br/><br/>
 Different colors:<br/>
 <span class="uncommon">yellow</span><br/>
 <span class="rare">green</span><br/>
@@ -59,8 +59,8 @@ export default function Help({}) {
         This application uses Markdown rendering to transform user-typed plain
         text into good-looking styled text.
         <br />
-        If you are unfamiliar with Markdown, here a quick rundown of what it
-        looks like. Feel free to edit the textfield and try out some styles.
+        If you are unfamiliar with Markdown, here is a quick rundown of what it
+        looks like. Feel free to edit the textfield and try it out on your own.
         <br />
         All of the Markdown components have been automatically designed for Dbd
         Perks.
@@ -84,7 +84,7 @@ export default function Help({}) {
         Example Perk
       </Heading>
       <Spacing space={12} />
-      <Perk type="very_rare" className="w-1/3 mx-auto" defaultName="dramaturgie" defaultDescription={dramaturgie} defaultShowcase />
+      <Perk className="w-full md:w-1/3 md:mx-auto" defaultName="dramaturgie" defaultDescription={dramaturgie} defaultShowcase />
     </>
   );
 }
