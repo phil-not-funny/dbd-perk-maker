@@ -17,17 +17,17 @@ interface Props {
   defaultName?: string;
   defaultDescription?: string;
   defaultShowcase?: boolean;
-  direction?: "vertically" | "horizontally";
+  horizontally?: boolean;
   iconCenter?: boolean;
 }
 
 const Perk: React.FC<Props> = ({
   teachableType,
-  className,
+  className = '',
   defaultName = "perkname",
   defaultDescription = "",
   defaultShowcase = false,
-  direction = "vertically",
+  horizontally = false,
   iconCenter = true,
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
@@ -36,7 +36,7 @@ const Perk: React.FC<Props> = ({
   const [img, setImg] = useState();
 
   return (
-    <div className={className}>
+    <div className={`${horizontally ? 'flex flex-row' : ''} ${iconCenter ? 'items-start' : 'items-center'} max-w-md ${className}`}>
       {img ? (
         <></>
       ) : (
@@ -50,11 +50,11 @@ const Perk: React.FC<Props> = ({
         >
           <img
             src={teachableType ? teachable_icon.src : very_rare_icon.src}
-            className="mx-auto h-32 w-auto mb-2"
+            className="mx-auto h-32 w-32 m-2"
           />
         </button>
       )}
-      <div className="bg-dark border-blackLight ">
+      <div className="bg-transparent border-blackLight ">
         <div className="relative">
           {editing ? (
             <SimpleInput
@@ -92,6 +92,7 @@ const Perk: React.FC<Props> = ({
         </div>
         <IconButton
           onClick={() => setEditing(!editing)}
+          className="hover:bg-blackLight rounded-none w-fit"
           icon={
             editing ? (
               <svg

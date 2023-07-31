@@ -7,7 +7,7 @@ import Perk from "@/components/Perk";
 import { Heading, Text } from "@/components/RichText";
 import Spacing from "@/components/Spacing";
 import Toggle from "@/components/Toggle";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const PerkCreator: React.FC = () => {
   const [teachable, setTeachable] = useState<boolean>(false);
@@ -15,13 +15,16 @@ const PerkCreator: React.FC = () => {
   const [iconsCentered, setIconsCentered] = useState<boolean>(false);
 
   const reusablePerk = (
-    <Perk teachableType={teachable} iconCenter={iconsCentered} />
+    <Perk teachableType={teachable} horizontally={horizontally} iconCenter={iconsCentered} />
   );
 
   const [perks, setPerks] = useState([reusablePerk]);
+  useEffect(() => {
+    setPerks(perks);
+  }, [teachable, horizontally, iconsCentered]);
 
   return (
-    <>
+    <div className="w-full">
       <GoBack />
       <Heading className="text-3xl sm:text-4xl">Perk Designer</Heading>
       <Text center tracking="wide" defaultSize="lg" wideScreenSize="xl">
@@ -31,7 +34,7 @@ const PerkCreator: React.FC = () => {
       <Text uppercase tracking="wider" bold defaultSize="lg" center>
         settings
       </Text>
-      <div className="flex flex-col items-center md:flex-row md:justify-evenly space-y-2 mt-2 md:mt-0">
+      <div className="flex flex-col items-end md:flex-row md:justify-evenly space-y-2 mt-2 md:mt-0">
         <Toggle
           text="Horizontally Aligned"
           onChange={(e) => setHorizontally(!horizontally)}
@@ -43,11 +46,12 @@ const PerkCreator: React.FC = () => {
         <Toggle
           text="Icons Centered"
           onChange={(e) => setIconsCentered(!iconsCentered)}
+          checked
         />
       </div>
       <Spacing space={12} />
-      <Grid cols={3}>
-        {perks.map(() => reusablePerk)}
+      <Grid cols={horizontally ? 1 : 3}>
+        {...perks.map(() => reusablePerk)}
         {perks.length < 3 && (
           <div className="h-full flex items-center">
             <EmptyState
@@ -76,7 +80,7 @@ const PerkCreator: React.FC = () => {
           </div>
         )}
       </Grid>
-    </>
+    </div>
   );
 };
 

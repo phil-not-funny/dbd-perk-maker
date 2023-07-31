@@ -13,7 +13,7 @@ const Toggle: React.FC<Props> = ({
   checked = false,
   disabled = false,
   onChange,
-  className,
+  className = "",
 }) => {
   const [set, setSet] = useState<boolean>(checked);
 
