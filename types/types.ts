@@ -4,3 +4,8 @@ export interface Perk {
     icon: string;
     type: "teachable" | "very_rare";
 };
+
+export interface ExportPerk {
+    name: string;
+    description: string;
+}

@@ -12,6 +12,7 @@ interface TextProps {
   width?: "full" | "default";
   tracking?: "wide" | "wider" | "widest" | "normal";
   center?: boolean;
+  id?: string;
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -24,6 +25,7 @@ export const Text: React.FC<TextProps> = ({
   wideScreenSize = defaultSize,
   width = "full",
   tracking = "normal",
+  id
 }) => {
   return (
     <p
@@ -34,6 +36,7 @@ export const Text: React.FC<TextProps> = ({
       } ${width === "full" ? "w-full" : "w-fit"} ${
         bold ? "font-semibold" : ""
       } ${className}`}
+      id={id}
     >
       {children}
     </p>

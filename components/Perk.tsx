@@ -19,6 +19,7 @@ interface Props {
   defaultShowcase?: boolean;
   horizontally?: boolean;
   iconCenter?: boolean;
+  id?: string
 }
 
 const Perk: React.FC<Props> = ({
@@ -29,6 +30,7 @@ const Perk: React.FC<Props> = ({
   defaultShowcase = false,
   horizontally = false,
   iconCenter = true,
+  id
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
   const [description, setDescription] = useState<string>(defaultDescription);
@@ -61,6 +63,7 @@ const Perk: React.FC<Props> = ({
               value={name}
               onChange={(value) => setName(value)}
               className="absolute top-6 left-4 uppercase font-semibold"
+              id={id + '-name'}
             />
           ) : (
             <Text
@@ -68,6 +71,7 @@ const Perk: React.FC<Props> = ({
               defaultSize="xl"
               bold
               className="absolute top-6 left-4 !text-beigeLight/80 !text-xl"
+              id={id + '-name'}
             >
               {name}
             </Text>
@@ -85,6 +89,7 @@ const Perk: React.FC<Props> = ({
               className="resize-none !p-4"
               value={description}
               placeholder="Design your Perk Description here"
+              id={id + '-description'}
             />
           ) : (
             <MarkdownDisplay value={description} />

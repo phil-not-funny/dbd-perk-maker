@@ -39,7 +39,7 @@ While running, press the _active ability button 2_ to run with knees high for 0.
 - Gain a random rare item, with random add-ons and drop any held item.
 
 _The same effect cannot happen twice in a row_<br/><br/>_Dramaturgy_ causes **exhaustion** for <span class="veryrare">40 seconds</span>. Can't be used while exhausted.<br/><br/>
-> Exposed Survivors will be downed by basic attacks even if uninjured.<br/>haste increases Survivor movement speed.<br/>Exhaustion prevents Survivors form activating other perks that cause Exhaustion.
+> Exposed Survivors will be downed by basic attacks even if uninjured.<br/>Haste increases Survivor movement speed.<br/>Exhaustion prevents Survivors form activating other perks that cause Exhaustion.
 
 <br/>
 
