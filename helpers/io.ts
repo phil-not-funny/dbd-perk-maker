@@ -3,7 +3,7 @@ import React from "react";
 
 export function savePerks(perks: any) {
   var parsedperks: Perk[] = perks.map((perk: any) => {
-    console.log(perk);
+    //console.log(perk);
     
     return { name: document.getElementById(perk.props.id + '-name')?.innerText, description: document.getElementById(perk.props.id + '-description')?.innerText };
   });

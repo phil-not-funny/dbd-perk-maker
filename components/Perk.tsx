@@ -19,42 +19,89 @@ interface Props {
   defaultShowcase?: boolean;
   horizontally?: boolean;
   iconCenter?: boolean;
-  id?: string
+  defaultId?: string;
 }
 
 const Perk: React.FC<Props> = ({
   teachableType,
-  className = '',
+  className = "",
   defaultName = "perkname",
   defaultDescription = "",
   defaultShowcase = false,
   horizontally = false,
   iconCenter = true,
-  id
+  defaultId,
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
   const [description, setDescription] = useState<string>(defaultDescription);
   const [name, setName] = useState<string>(defaultName);
-  const [img, setImg] = useState();
+
+  const createId = () => {
+    const inital = name.replace(/ /g, "_");
+    let created = inital;
+    var iterator = 0;
+    while (document.getElementById(created)) {
+      iterator++;
+      created = `${inital}-${iterator}`;
+
+      console.log(created);
+    }
+
+    return created;
+  };
+  const [id, setId] = useState<string>(defaultId || createId());
+
+  const [img, setImg] = useState("");
 
   return (
-    <div className={`${horizontally ? 'flex flex-row' : ''} ${iconCenter ? 'items-start' : 'items-center'} max-w-md ${className}`}>
-      {img ? (
-        <></>
-      ) : (
-        <button
+    <div
+      className={`${horizontally ? "flex flex-row" : ""} ${
+        iconCenter ? "items-start" : "items-center"
+      } max-w-md ${className}`}
+    >
+      <label
+        htmlFor={id + "-upload"}
+        className="mx-auto flex items-center justify-center"
+      >
+        <div className="p-2 bg-inherit hover:bg-dark w-fit text-white rounded-full cursor-pointer flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+            />
+          </svg>
+          <Text className="ml-2">Upload Image</Text>
+        </div>
+        <input
+          id={id + "-upload"}
           className={`${
             !iconCenter ? "block" : ""
-          } hover:cursor-pointer mx-auto`}
-          onClick={() => {
-            console.log("test");
+          } hover:cursor-pointer mx-auto hidden`}
+          type="file"
+          onChange={({ target }) => {
+            if (target.files) {
+              const file = target.files[0];
+              setImg(URL.createObjectURL(file));
+            }
           }}
-        >
-          <img
-            src={teachableType ? teachable_icon.src : very_rare_icon.src}
-            className="mx-auto h-32 w-32 m-2"
-          />
-        </button>
+          hidden
+        />
+      </label>
+      {img ? (
+        <img src={img} className="mx-auto h-32 w-32 m-2" />
+      ) : (
+        <img
+          src={teachableType ? teachable_icon.src : very_rare_icon.src}
+          className="mx-auto h-32 w-32 m-2"
+        />
       )}
       <div className="bg-transparent border-blackLight ">
         <div className="relative">
@@ -63,7 +110,7 @@ const Perk: React.FC<Props> = ({
               value={name}
               onChange={(value) => setName(value)}
               className="absolute top-6 left-4 uppercase font-semibold"
-              id={id + '-name'}
+              id={id + "-name"}
             />
           ) : (
             <Text
@@ -71,7 +118,7 @@ const Perk: React.FC<Props> = ({
               defaultSize="xl"
               bold
               className="absolute top-6 left-4 !text-beigeLight/80 !text-xl"
-              id={id + '-name'}
+              id={id + "-name"}
             >
               {name}
             </Text>
@@ -89,7 +136,7 @@ const Perk: React.FC<Props> = ({
               className="resize-none !p-4"
               value={description}
               placeholder="Design your Perk Description here"
-              id={id + '-description'}
+              id={id + "-description"}
             />
           ) : (
             <MarkdownDisplay value={description} />
