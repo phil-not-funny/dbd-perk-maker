@@ -2,10 +2,15 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
-const MarkdownDisplay: React.FC<{ value: string }> = ({ value }) => {
+const MarkdownDisplay: React.FC<{ value: string; className?: string }> = ({
+  value,
+  className,
+}) => {
   return (
     <ReactMarkdown
-      className="p-4 text-white/80 font-[450] font-roboto text-[0.9rem]"
+      className={
+        "p-4 text-white/80 font-[450] font-roboto text-[0.9rem] " + className
+      }
       allowedElements={[
         "br",
         "strong",
@@ -14,7 +19,7 @@ const MarkdownDisplay: React.FC<{ value: string }> = ({ value }) => {
         "span",
         "p",
         "ul",
-        "li"
+        "li",
       ]}
       components={{
         blockquote: ({ node, ...props }) => (
@@ -23,7 +28,14 @@ const MarkdownDisplay: React.FC<{ value: string }> = ({ value }) => {
         span: ({ node, ...props }) => (
           <span className={`!text-${props.className}`} {...props} />
         ),
-        li: ({node, ...props}) => <li className="relative pl-2 mt-0.5"><span className="absolute top-0 left-0">&#x2022;{' '}</span><span className="ml-2 inline-block leading-tight">{props.children}</span></li>,
+        li: ({ node, ...props }) => (
+          <li className="relative pl-2 mt-0.5">
+            <span className="absolute top-0 left-0">&#x2022; </span>
+            <span className="ml-2 inline-block leading-tight">
+              {props.children}
+            </span>
+          </li>
+        ),
       }}
       rehypePlugins={[rehypeRaw]}
     >

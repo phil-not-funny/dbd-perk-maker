@@ -11,6 +11,10 @@
   all: revert;
 }
 
+.heading {
+  font-size: large;
+}
+
 .uncommon {
   color: rgb(227, 204, 54);
   font-weight: 600;

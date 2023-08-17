@@ -9,39 +9,39 @@ import Spacing from "@/components/Spacing";
 import TextArea from "@/components/TextArea";
 import React, { useState } from "react";
 
-const showcase = `Basic Markdown:<br/>
-This is a **fat text**<br/>
-This is a _cursive text_<br/>
-If you haven't noticed, these are line breaks:<br/><br/>
+const showcase = `Basic Markdown:<br>
+This is a **fat text**<br>
+This is a _cursive text_<br>
+If you haven't noticed, these are line breaks:<br><br>
 Advanced Markdown:
 > This makes a blockquote (used at the end of Dbd Perks)
 
-^ End with two [Enter]<br/>
+^ End with two [Enter]<br>
 Here's a List:
 - Item no.1
-- Item no.2<br/>Aligns in next line
+- Item no.2<br>Aligns in next line
 
-^ End with two [Enter]<br/><br/>
-Different colors:<br/>
-<span class="uncommon">yellow</span><br/>
-<span class="rare">green</span><br/>
-<span class="veryrare">purple</span><br/>
-<span class="teachable">orange</span><br/>
-<span class="bloodpoints">red</span><br/>
+^ End with two [Enter]<br><br>
+Different colors:<br>
+<span class="uncommon">yellow</span><br>
+<span class="rare">green</span><br>
+<span class="veryrare">purple</span><br>
+<span class="teachable">orange</span><br>
+<span class="bloodpoints">red</span><br>
 <span class="iridescent">pink</span>`;
 
-const dramaturgie = `When people bring you to their project, they do so because of the unexpected magic you bring to your performance.<br/><br/>
-_Dramaturgy_ activates while you are healthy.<br/><br/>
+const dramaturgie = `When people bring you to their project, they do so because of the unexpected magic you bring to your performance.<br><br>
+_Dramaturgy_ activates while you are healthy.<br><br>
 While running, press the _active ability button 2_ to run with knees high for 0.5 seconds and then gain a <span class="uncommon">25%</span> Haste for <span class="teachable">2 seconds</span>, followed by a unknown effect.
 - Become **Exposed** for <span class="bloodpoints">12 seconds</span>;
 - Gain <span class="bloodpoints">25%</span> **Haste** for <span class="bloodpoints">2 seconds</span>;
 - Scream, but nothing happens;
 - Gain a random rare item, with random add-ons and drop any held item.
 
-_The same effect cannot happen twice in a row_<br/><br/>_Dramaturgy_ causes **exhaustion** for <span class="veryrare">40 seconds</span>. Can't be used while exhausted.<br/><br/>
+_The same effect cannot happen twice in a row_<br><br>_Dramaturgy_ causes **exhaustion** for <span class="veryrare">40 seconds</span>. Can't be used while exhausted.<br><br>
 > Exposed Survivors will be downed by basic attacks even if uninjured.<br/>Haste increases Survivor movement speed.<br/>Exhaustion prevents Survivors form activating other perks that cause Exhaustion.
 
-<br/>
+<br>
 
 > "Take the part. It's a good movie, he says. What's the worst that can happen?" - Nicolas Cage`;
 
