@@ -6,6 +6,12 @@ import Grid from "@/components/Grid";
 import CardButton from "@/components/CardButton";
 import dbdfont from "@/public/deadbydaylightfont.png";
 import Link from "@/node_modules/next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dbd Perk Maker",
+  description: "Dbd Perk maker without shit design",
+};
 
 export default function Home() {
   return (

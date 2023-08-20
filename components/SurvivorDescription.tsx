@@ -103,11 +103,11 @@ const SurvivorDescription: React.FC<Props> = ({
       </div>
       <div className="flex flex-col md:flex-row justify-center relative">
         {img ? (
-          <img src={img} className="h-44 mx-auto md:mx-2 w-32 m-2" />
+          <img src={img} className="max-h-96 h-auto mx-auto md:mx-2 w-auto m-2" />
         ) : (
           <img
             src={chracterFrame.src}
-            className="mx-auto md:mx-2 h-44 w-32 m-2"
+            className="mx-auto md:mx-2 h-52 w-auto m-2"
           />
         )}
         <div className="mt-3 w-1/2">

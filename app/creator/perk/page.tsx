@@ -17,6 +17,7 @@ const PerkCreator: React.FC = () => {
   const [iconsCentered, setIconsCentered] = useState<boolean>(false);
   
   const [perks, setPerks] = useState<any>([]);
+  const [anchorProps, setAnchorProps] = useState<any>();
 
   const reusablePerk = (
     <Perk
@@ -88,7 +89,7 @@ const PerkCreator: React.FC = () => {
         )}
       </Grid>
       <Spacing space={12} />
-      <a {...savePerks(perks)} className="w-full">
+      <a {...anchorProps} className="w-full">
         <IconButton
           icon={
             <svg
@@ -107,7 +108,7 @@ const PerkCreator: React.FC = () => {
             </svg>
           }
           text="Download"
-          onClick={() => {}}
+          onClick={() => {setAnchorProps(savePerks(perks.map((perk: any) => perk.props.id)))}}
         />
       </a>
     </div>

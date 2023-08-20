@@ -2,10 +2,12 @@ import { Perk } from "@/types/types";
 import React from "react";
 
 export function savePerks(perks: any) {
-  var parsedperks: Perk[] = perks.map((perk: any) => {
-    //console.log(perk);
-    
-    return { name: document.getElementById(perk.props.id + '-name')?.innerText, description: document.getElementById(perk.props.id + '-description')?.innerText };
+  var parsedperks: string[] = perks.map((perk: string) => {
+
+    return { 
+      name: sessionStorage.getItem(perk + "-name"),
+      description: sessionStorage.getItem(perk + "-description"),
+    };
   });
   console.log(parsedperks);
 

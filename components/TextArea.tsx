@@ -6,16 +6,26 @@ interface Props {
   onChange?: (value: string) => void;
   className?: string;
   value?: string;
-  id?: string
+  id?: string;
 }
 
-const TextArea: React.FC<Props> = ({ rows = 12, placeholder, onChange, className, value, id }) => {
+const TextArea: React.FC<Props> = ({
+  rows = 12,
+  placeholder,
+  onChange,
+  className,
+  value = "",
+  id = "",
+}) => {
   return (
     <textarea
       rows={rows}
       className={`w-full m-0 p-0 text-sm !rounded-none text-white bg-blackLight ${className}`}
       placeholder={placeholder}
-      onChange={(e) => onChange?.(e.target.value)}
+      onChange={(e) => {
+        onChange?.(e.target.value);
+        sessionStorage.setItem(id, e.target.value);
+      }}
       value={value}
       id={id}
     />

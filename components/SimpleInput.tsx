@@ -8,7 +8,7 @@ interface Props {
     className?: string;
 }
 
-const SimpleInput: React.FC<Props> = ({id, value, placeholder, onChange, className}) => {
+const SimpleInput: React.FC<Props> = ({id = "perk", value = "", placeholder, onChange, className}) => {
   return (
     <input
       type="text"
@@ -17,7 +17,11 @@ const SimpleInput: React.FC<Props> = ({id, value, placeholder, onChange, classNa
       placeholder={placeholder}
       required
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e) => {
+        onChange(e.target.value);
+        sessionStorage.setItem(id, e.target.value);
+      }}
+      name={value}
     ></input>
   );
 };
