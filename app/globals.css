@@ -15,33 +15,38 @@
   font-size: large;
 }
 
-.uncommon {
+.yellow {
   color: rgb(227, 204, 54);
   font-weight: 600;
 }
 
-.rare {
+.green {
   color: rgb(28, 122, 35);
   font-weight: 600;
 
 }
 
-.veryrare {
+.purple {
   color: rgb(155, 75, 184);
   font-weight: 600;
 }
 
-.teachable {
+.orange {
   color: rgb(255, 114, 44);
   font-weight: 600;
 }
 
-.bloodpoints {
+.red {
   color: rgb(238, 1, 1);
   font-weight: 600;
 }
 
-.iridescent {
+.pink {
   color: rgb(248, 58, 115);
   font-weight: 600;
+}
+
+.beige {
+  color: rgb(226, 206, 151);
+  font-style: italic;
 }

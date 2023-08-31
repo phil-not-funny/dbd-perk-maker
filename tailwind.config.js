@@ -31,6 +31,7 @@ module.exports = {
       description: "#E2CE97",
       beige: "#E2CE97",
       beigeLight: "#FFFAEB",
+      quote: '#bfb599',
       ...colors
     }
   },

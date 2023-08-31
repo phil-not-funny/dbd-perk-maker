@@ -23,7 +23,7 @@ const MarkdownDisplay: React.FC<{ value: string; className?: string }> = ({
       ]}
       components={{
         blockquote: ({ node, ...props }) => (
-          <span className="text-beige italic" {...props} />
+          <span className="text-quote italic" {...props} />
         ),
         span: ({ node, ...props }) => (
           <span className={`!text-${props.className}`} {...props} />
