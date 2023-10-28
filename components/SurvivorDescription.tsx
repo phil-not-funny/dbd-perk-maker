@@ -26,7 +26,7 @@ const SurvivorDescription: React.FC<Props> = ({
 
   return (
     <>
-      <div className="flex flex-row items-center space-x-5 w-full justify-center">
+      <div className="flex flex-row items-center space-x-5 w-full justify-center w-full">
         {editing && (
           <label
             htmlFor={id + "-upload"}
@@ -164,7 +164,7 @@ const SurvivorDescription: React.FC<Props> = ({
               id={id + "-description"}
             />
           ) : (
-            <MarkdownDisplay value={backstory} className="!text-white/90 w-full" />
+            <MarkdownDisplay value={backstory} className="!text-white/90 w-full overflow-y-scroll !max-h-screen border border-dashed border-white/80 rounded" />
           )}
         </div>
       </div>
