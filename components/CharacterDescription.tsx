@@ -12,11 +12,11 @@ interface Props {
   id?: string;
 }
 
-const SurvivorDescription: React.FC<Props> = ({
+const CharacterDescription: React.FC<Props> = ({
   defaultShowcase = false,
   id = "survivor",
 }) => {
-  const [name, setName] = useState<string>("surivorname");
+  const [name, setName] = useState<string>("charctername");
   const [description, setDescription] = useState<string>("");
   const [backstory, setBackstory] = useState<string>("");
 
@@ -26,7 +26,7 @@ const SurvivorDescription: React.FC<Props> = ({
 
   return (
     <>
-      <div className="flex flex-row items-center space-x-5 w-full justify-center w-full">
+      <div className="flex flex-row items-center space-x-5 w-full justify-center">
         {editing && (
           <label
             htmlFor={id + "-upload"}
@@ -135,7 +135,7 @@ const SurvivorDescription: React.FC<Props> = ({
               rows={6}
               className="resize-none !p-4 w-full"
               value={description}
-              placeholder="Short Surivor Description"
+              placeholder="Short Character Description"
               id={id + "-description"}
             />
           ) : (
@@ -160,11 +160,11 @@ const SurvivorDescription: React.FC<Props> = ({
               rows={10}
               className="resize-y !p-4 w-full"
               value={backstory}
-              placeholder="Backstory of Survivor"
+              placeholder="Backstory of Character"
               id={id + "-description"}
             />
           ) : (
-            <MarkdownDisplay value={backstory} className="!text-white/90 w-full overflow-y-scroll !max-h-screen border border-dashed border-white/80 rounded" />
+            <MarkdownDisplay value={backstory} className="!text-white/90 w-full overflow-y-scroll !max-h-96 border border-dashed border-white/80 rounded" />
           )}
         </div>
       </div>
@@ -172,4 +172,4 @@ const SurvivorDescription: React.FC<Props> = ({
   );
 };
 
-export default SurvivorDescription;
+export default CharacterDescription;

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import GoBack from "@/components/GoBack";
 import Grid from "@/components/Grid";
@@ -8,8 +8,8 @@ import { Heading, Text } from "@/components/RichText";
 import Spacing from "@/components/Spacing";
 import CharacterDescription from "@/components/CharacterDescription";
 import { savePerks } from "@/helpers/io";
-import React, {useState} from "react";
-
+import React, { useState } from "react";
+import Power from "@/components/Power";
 
 const SurvivorCreator: React.FC<{}> = () => {
   const [anchorProps, setAnchorProps] = useState<any>();
@@ -17,20 +17,31 @@ const SurvivorCreator: React.FC<{}> = () => {
   return (
     <div className="w-full">
       <GoBack />
-      <Heading className="text-3xl sm:text-4xl">Survivor Designer</Heading>
+      <Heading className="text-3xl sm:text-4xl">Killer Designer</Heading>
       <Text center tracking="wide" defaultSize="lg" wideScreenSize="xl">
-        Design three perks and a survivor description
+        Design three perks and a killer description
       </Text>
       <Spacing space={12} />
       <CharacterDescription defaultShowcase={false} />
+      <Spacing space={12} />
+      <Power />
       <Spacing space={16} />
-      <Text uppercase className="border-b border-white" center defaultSize="xl" wideScreenSize="2xl" bold>personal perks</Text>
+      <Text
+        uppercase
+        className="border-b border-white"
+        center
+        defaultSize="xl"
+        wideScreenSize="2xl"
+        bold
+      >
+        personal perks
+      </Text>
       <Spacing space={6} />
       <Grid cols={3}>
         <Perk iconCenter defaultId="perk-1" />
-        <Perk iconCenter defaultId="perk-2"/>
-        <Perk iconCenter defaultId="perk-3"/>
-      </Grid> 
+        <Perk iconCenter defaultId="perk-2" />
+        <Perk iconCenter defaultId="perk-3" />
+      </Grid>
       <a {...anchorProps} className="w-full">
         <IconButton
           icon={
@@ -50,7 +61,9 @@ const SurvivorCreator: React.FC<{}> = () => {
             </svg>
           }
           text="Download"
-          onClick={() => {setAnchorProps(savePerks(["perk-1", "perk-2", "perk-3"]))}}
+          onClick={() => {
+            setAnchorProps(savePerks(["perk-1", "perk-2", "perk-3"]));
+          }}
         />
       </a>
     </div>
