@@ -14,7 +14,8 @@ interface Props {
   defaultName?: string;
   defaultDescription?: string;
   defaultShowcase?: boolean;
-  defaultId?: string;
+  id?: string;
+  onPowerChange?: (power: { name: string; description: string }) => void;
 }
 
 const Power: React.FC<Props> = ({
@@ -22,25 +23,11 @@ const Power: React.FC<Props> = ({
   defaultName = "powername",
   defaultDescription = "",
   defaultShowcase = false,
-  defaultId,
+  id,
+  onPowerChange,
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
-  const [description, setDescription] = useState<string>(defaultDescription);
-  const [name, setName] = useState<string>(defaultName);
-
-  const createId = () => {
-    const inital = name.replace(/ /g, "_");
-    let created = `${inital}-${sessionStorage.getItem("duplicatePowerNumber")}`;
-
-    sessionStorage.setItem(
-      "duplicatePowerNumber",
-      (
-        parseInt(sessionStorage.getItem("duplicatePowerNumber") || "0") + 1
-      ).toString() || "0"
-    );
-    return created;
-  };
-  const [id, setId] = useState<string>(defaultId || createId());
+  const [power, setPower] = useState({ name: defaultName, description: defaultDescription });
 
   const [img, setImg] = useState("");
 
@@ -92,8 +79,11 @@ const Power: React.FC<Props> = ({
           <div className="relative">
             {editing ? (
               <SimpleInput
-                value={name}
-                onChange={(value) => setName(value)}
+                value={power.name}
+                onChange={(value) => {
+                  setPower({ name: value, description: power.description });
+                  onPowerChange?.(power);
+                }}
                 className="absolute top-4 left-4 uppercase font-semibold"
                 id={id + "-name"}
               />
@@ -105,7 +95,7 @@ const Power: React.FC<Props> = ({
                 className="absolute top-4 left-4 !text-beigeLight/80 !text-xl"
                 id={id + "-name"}
               >
-                {name}
+                {power.name}
               </Text>
             )}
             <img src={power_title.src} className="w-full h-auto" />
@@ -113,15 +103,18 @@ const Power: React.FC<Props> = ({
           <div className="bg-blackLight">
             {editing ? (
               <TextArea
-                onChange={(value) => setDescription(value)}
+                onChange={(value) => {
+                  setPower({ name: power.name, description: value });
+                  onPowerChange?.(power);
+                }}
                 rows={20}
                 className="resize-none !p-4"
-                value={description}
+                value={power.description}
                 placeholder="Design your Power Description here"
                 id={id + "-description"}
               />
             ) : (
-              <MarkdownDisplay value={description} />
+              <MarkdownDisplay value={power.description} />
             )}
           </div>
           <IconButton

@@ -1,21 +1,11 @@
-import { Perk } from "@/types/types";
-import React from "react";
-
-export function savePerks(perks: any) {
-  var parsedperks: string[] = perks.map((perk: string) => {
-
-    return { 
-      name: sessionStorage.getItem(perk + "-name"),
-      description: sessionStorage.getItem(perk + "-description"),
-    };
-  });
-  console.log(parsedperks);
-
+export function writeProps(object: any) {
+  console.log(object);
+  
   return {
     download: true,
     href:
       "data:text/plain;charset=utf-8," +
-      encodeURIComponent(JSON.stringify(parsedperks)),
+      encodeURIComponent(JSON.stringify(object)),
   };
 }
 

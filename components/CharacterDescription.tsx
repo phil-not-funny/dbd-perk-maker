@@ -10,11 +10,17 @@ import Spacing from "./Spacing";
 interface Props {
   defaultShowcase?: boolean;
   id?: string;
+  onNameChange?: (value: string) => void;
+  onDescriptionChange?: (value: string) => void;
+  onLoreChange?: (value: string) => void;
 }
 
 const CharacterDescription: React.FC<Props> = ({
   defaultShowcase = false,
-  id = "survivor",
+  id,
+  onNameChange,
+  onDescriptionChange,
+  onLoreChange,
 }) => {
   const [name, setName] = useState<string>("charctername");
   const [description, setDescription] = useState<string>("");
@@ -103,7 +109,10 @@ const CharacterDescription: React.FC<Props> = ({
       </div>
       <div className="flex flex-col md:flex-row justify-center relative">
         {img ? (
-          <img src={img} className="max-h-96 h-auto mx-auto md:mx-2 w-auto m-2" />
+          <img
+            src={img}
+            className="max-h-96 h-auto mx-auto md:mx-2 w-auto m-2"
+          />
         ) : (
           <img
             src={chracterFrame.src}
@@ -114,7 +123,10 @@ const CharacterDescription: React.FC<Props> = ({
           {editing ? (
             <SimpleInput
               value={name}
-              onChange={(value) => setName(value)}
+              onChange={(value) => {
+                onNameChange?.(value);
+                setName(value);
+              }}
               className=" uppercase font-semibold w-full border-b border-white text-white "
               id={id + "-name"}
             />
@@ -131,7 +143,10 @@ const CharacterDescription: React.FC<Props> = ({
           )}
           {editing ? (
             <TextArea
-              onChange={(value) => setDescription(value)}
+              onChange={(value) => {
+                onDescriptionChange?.(value);
+                setDescription(value);
+              }}
               rows={6}
               className="resize-none !p-4 w-full"
               value={description}
@@ -156,7 +171,10 @@ const CharacterDescription: React.FC<Props> = ({
           </Text>
           {editing ? (
             <TextArea
-              onChange={(value) => setBackstory(value)}
+              onChange={(value) => {
+                onLoreChange?.(value);
+                setBackstory(value);
+              }}
               rows={10}
               className="resize-y !p-4 w-full"
               value={backstory}
@@ -164,7 +182,10 @@ const CharacterDescription: React.FC<Props> = ({
               id={id + "-description"}
             />
           ) : (
-            <MarkdownDisplay value={backstory} className="!text-white/90 w-full overflow-y-scroll !max-h-96 border border-dashed border-white/80 rounded" />
+            <MarkdownDisplay
+              value={backstory}
+              className="!text-white/90 w-full overflow-y-scroll !max-h-96 border border-dashed border-white/80 rounded"
+            />
           )}
         </div>
       </div>

@@ -7,12 +7,17 @@ import Perk from "@/components/Perk";
 import { Heading, Text } from "@/components/RichText";
 import Spacing from "@/components/Spacing";
 import CharacterDescription from "@/components/CharacterDescription";
-import { savePerks } from "@/helpers/io";
+import { writeProps } from "@/helpers/io";
 import React, { useState } from "react";
 import Power from "@/components/Power";
 
 const SurvivorCreator: React.FC<{}> = () => {
   const [anchorProps, setAnchorProps] = useState<any>();
+  const [name, setName] = useState("charactername");
+  const [description, setDescription] = useState("");
+  const [lore, setLore] = useState("");
+  const [power, setPower] = useState({ name: "", description: "" });
+  const [perks, setPerk] = useState([{}, {}, {}]);
 
   return (
     <div className="w-full">
@@ -22,9 +27,14 @@ const SurvivorCreator: React.FC<{}> = () => {
         Design three perks and a killer description
       </Text>
       <Spacing space={12} />
-      <CharacterDescription defaultShowcase={false} />
+      <CharacterDescription
+        defaultShowcase={false}
+        onNameChange={(val) => setName(val)}
+        onDescriptionChange={(val) => setDescription(val)}
+        onLoreChange={(val) => setLore(val)}
+      />
       <Spacing space={12} />
-      <Power />
+      <Power onPowerChange={(power) => setPower(power)} />
       <Spacing space={16} />
       <Text
         uppercase
@@ -38,9 +48,21 @@ const SurvivorCreator: React.FC<{}> = () => {
       </Text>
       <Spacing space={6} />
       <Grid cols={3}>
-        <Perk iconCenter defaultId="perk-1" />
-        <Perk iconCenter defaultId="perk-2" />
-        <Perk iconCenter defaultId="perk-3" />
+        <Perk
+          iconCenter
+          id="perk-1"
+          onPerkChange={(perk) => (perks[0] = perk)}
+        />
+        <Perk
+          iconCenter
+          id="perk-2"
+          onPerkChange={(perk) => (perks[1] = perk)}
+        />
+        <Perk
+          iconCenter
+          id="perk-3"
+          onPerkChange={(perk) => (perks[2] = perk)}
+        />
       </Grid>
       <a {...anchorProps} className="w-full">
         <IconButton
@@ -62,7 +84,9 @@ const SurvivorCreator: React.FC<{}> = () => {
           }
           text="Download"
           onClick={() => {
-            setAnchorProps(savePerks(["perk-1", "perk-2", "perk-3"]));
+            setAnchorProps(
+              writeProps({ name, description, lore, power, perks })
+            );
           }}
         />
       </a>

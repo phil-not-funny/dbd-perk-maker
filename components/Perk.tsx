@@ -19,7 +19,8 @@ interface Props {
   defaultShowcase?: boolean;
   horizontally?: boolean;
   iconCenter?: boolean;
-  defaultId?: string;
+  id?: string;
+  onPerkChange?: (perk: { name: string; description: string }) => void;
 }
 
 const Perk: React.FC<Props> = ({
@@ -30,25 +31,14 @@ const Perk: React.FC<Props> = ({
   defaultShowcase = false,
   horizontally = false,
   iconCenter = true,
-  defaultId,
+  onPerkChange,
+  id,
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
-  const [description, setDescription] = useState<string>(defaultDescription);
-  const [name, setName] = useState<string>(defaultName);
-
-  const createId = () => {
-    const inital = name.replace(/ /g, "_");
-    let created = `${inital}-${sessionStorage.getItem("duplicatePerkNumber")}`;
-
-    sessionStorage.setItem(
-      "duplicatePerkNumber",
-      (
-        parseInt(sessionStorage.getItem("duplicatePerkNumber") || "0") + 1
-      ).toString() || "0"
-    );
-    return created;
-  };
-  const [id, setId] = useState<string>(defaultId || createId());
+  const [perk, setPerk] = useState({
+    name: defaultName,
+    description: defaultDescription,
+  });
 
   const [img, setImg] = useState("");
 
@@ -97,19 +87,22 @@ const Perk: React.FC<Props> = ({
         </label>
       )}
       {img ? (
-        <img src={img} className="mx-auto h-32 w-32 m-2" />
+        <img src={img} className="mx-auto h-44 w-44 m-2" />
       ) : (
         <img
           src={teachableType ? teachable_icon.src : very_rare_icon.src}
-          className="mx-auto h-32 w-32 m-2"
+          className="mx-auto h-44 w-44 m-2"
         />
       )}
       <div className="bg-transparent border-blackLight ">
         <div className="relative">
           {editing ? (
             <SimpleInput
-              value={name}
-              onChange={(value) => setName(value)}
+              value={perk.name}
+              onChange={(value) => {
+                setPerk({ name: value, description: perk.description });
+                onPerkChange?.(perk);
+              }}
               className="absolute top-6 left-4 uppercase font-semibold"
               id={id + "-name"}
             />
@@ -121,7 +114,7 @@ const Perk: React.FC<Props> = ({
               className="absolute top-6 left-4 !text-beigeLight/80 !text-xl"
               id={id + "-name"}
             >
-              {name}
+              {perk.name}
             </Text>
           )}
           <img
@@ -132,15 +125,18 @@ const Perk: React.FC<Props> = ({
         <div className="bg-blackLight">
           {editing ? (
             <TextArea
-              onChange={(value) => setDescription(value)}
+              onChange={(value) => {
+                setPerk({ name: perk.name, description: value });
+                onPerkChange?.(perk);
+              }}
               rows={20}
               className="resize-none !p-4"
-              value={description}
+              value={perk.description}
               placeholder="Design your Perk Description here"
               id={id + "-description"}
             />
           ) : (
-            <MarkdownDisplay value={description} />
+            <MarkdownDisplay value={perk.description} />
           )}
         </div>
         <IconButton
