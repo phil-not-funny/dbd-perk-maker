@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import chracterFrame from "@/public/character_frame.png";
 import { Text } from "./RichText";
 import IconButton from "./IconButton";
@@ -13,6 +13,9 @@ interface Props {
   onNameChange?: (value: string) => void;
   onDescriptionChange?: (value: string) => void;
   onLoreChange?: (value: string) => void;
+  defaultName?: string;
+  defaultDescription?: string;
+  defaultLore?: string;
 }
 
 const CharacterDescription: React.FC<Props> = ({
@@ -21,14 +24,23 @@ const CharacterDescription: React.FC<Props> = ({
   onNameChange,
   onDescriptionChange,
   onLoreChange,
+  defaultName = "charactername",
+  defaultDescription = "",
+  defaultLore = ""
 }) => {
-  const [name, setName] = useState<string>("charctername");
-  const [description, setDescription] = useState<string>("");
-  const [backstory, setBackstory] = useState<string>("");
+  const [name, setName] = useState<string>(defaultName);
+  const [description, setDescription] = useState<string>(defaultDescription);
+  const [backstory, setBackstory] = useState<string>(defaultLore);
 
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
 
   const [img, setImg] = useState<string>();
+
+  useEffect(() => {
+    setName(defaultName);
+    setDescription(defaultDescription);
+    setBackstory(defaultLore);
+  }, [defaultName, defaultDescription, defaultLore])
 
   return (
     <>

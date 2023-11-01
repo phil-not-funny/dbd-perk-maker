@@ -9,4 +9,8 @@ export function writeProps(object: any) {
   };
 }
 
+export function readFile() {
+
+}
+
 export function loadPerks() {}

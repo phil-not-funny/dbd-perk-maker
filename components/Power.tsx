@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import power_icon from "@/public/power_icon.png";
 import power_title from "@/public/power_title.png";
@@ -11,8 +11,7 @@ import SimpleInput from "./SimpleInput";
 
 interface Props {
   className?: string;
-  defaultName?: string;
-  defaultDescription?: string;
+  defaultPower?: { name: string; description: string };
   defaultShowcase?: boolean;
   id?: string;
   onPowerChange?: (power: { name: string; description: string }) => void;
@@ -20,16 +19,19 @@ interface Props {
 
 const Power: React.FC<Props> = ({
   className = "",
-  defaultName = "powername",
-  defaultDescription = "",
+  defaultPower = { name: "powername", description: "" },
   defaultShowcase = false,
   id,
   onPowerChange,
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
-  const [power, setPower] = useState({ name: defaultName, description: defaultDescription });
+  const [power, setPower] = useState(defaultPower);
 
   const [img, setImg] = useState("");
+
+  useEffect(() => {
+    setPower(defaultPower);
+  }, [defaultPower]);
 
   return (
     <div className="w-full flex justify-center">

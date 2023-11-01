@@ -8,7 +8,7 @@ import { Heading, Text } from "@/components/RichText";
 import Spacing from "@/components/Spacing";
 import CharacterDescription from "@/components/CharacterDescription";
 import { writeProps } from "@/helpers/io";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Power from "@/components/Power";
 
 const SurvivorCreator: React.FC<{}> = () => {
@@ -18,6 +18,21 @@ const SurvivorCreator: React.FC<{}> = () => {
   const [lore, setLore] = useState("");
   const [power, setPower] = useState({ name: "", description: "" });
   const [perks, setPerk] = useState([{}, {}, {}]);
+  const [uploaded, setUploaded] = useState({
+    name: "charactername",
+    description: "",
+    lore: "",
+    power: { name: "powername", description: "" },
+    perks: [
+      { name: "perkname", description: "" },
+      { name: "perkname", description: "" },
+      { name: "perkname", description: "" },
+    ],
+  });
+
+  useEffect(() => {
+    console.log(uploaded);
+  }, [uploaded]);
 
   return (
     <div className="w-full">
@@ -32,9 +47,15 @@ const SurvivorCreator: React.FC<{}> = () => {
         onNameChange={(val) => setName(val)}
         onDescriptionChange={(val) => setDescription(val)}
         onLoreChange={(val) => setLore(val)}
+        defaultName={uploaded.name}
+        defaultDescription={uploaded.description}
+        defaultLore={uploaded.lore}
       />
       <Spacing space={12} />
-      <Power onPowerChange={(power) => setPower(power)} />
+      <Power
+        onPowerChange={(power) => setPower(power)}
+        defaultPower={uploaded.power}
+      />
       <Spacing space={16} />
       <Text
         uppercase
@@ -52,16 +73,19 @@ const SurvivorCreator: React.FC<{}> = () => {
           iconCenter
           id="perk-1"
           onPerkChange={(perk) => (perks[0] = perk)}
+          defaultPerk={uploaded.perks[0]}
         />
         <Perk
           iconCenter
           id="perk-2"
           onPerkChange={(perk) => (perks[1] = perk)}
+          defaultPerk={uploaded.perks[1]}
         />
         <Perk
           iconCenter
           id="perk-3"
           onPerkChange={(perk) => (perks[2] = perk)}
+          defaultPerk={uploaded.perks[2]}
         />
       </Grid>
       <a {...anchorProps} className="w-full">
@@ -90,6 +114,44 @@ const SurvivorCreator: React.FC<{}> = () => {
           }}
         />
       </a>
+      <label htmlFor="DBDkiller-upload">
+        <div className="p-2 bg-inherit hover:bg-dark w-fit text-white rounded-full cursor-pointer flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-7 h-7"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M7.5 7.5h-.75A2.25 2.25 0 004.5 9.75v7.5a2.25 2.25 0 002.25 2.25h7.5a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25h-.75m0-3l-3-3m0 0l-3 3m3-3v11.25m6-2.25h.75a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25h-7.5a2.25 2.25 0 01-2.25-2.25v-.75"
+            />
+          </svg>
+
+          <Text className="ml-2">Load File</Text>
+        </div>
+        <input
+          id={"DBDkiller-upload"}
+          className={`hover:cursor-pointer mx-auto hidden`}
+          type="file"
+          accept=".txt"
+          onChange={({ target }) => {
+            if (target.files) {
+              const file = target.files[0];
+              const reader = new FileReader();
+              const handleFileLoad = (e: any) => {
+                setUploaded(JSON.parse(e.target.result));
+              };
+              reader.onload = handleFileLoad;
+              reader.readAsText(file);
+            }
+          }}
+          hidden
+        />
+      </label>
     </div>
   );
 };

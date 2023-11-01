@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import very_rare_icon from "@/public/very_rare_icon.png";
 import very_rare_title from "@/public/vary_rare_title.png";
@@ -14,8 +14,7 @@ import SimpleInput from "./SimpleInput";
 interface Props {
   teachableType?: boolean;
   className?: string;
-  defaultName?: string;
-  defaultDescription?: string;
+  defaultPerk?: { name: string; description: string };
   defaultShowcase?: boolean;
   horizontally?: boolean;
   iconCenter?: boolean;
@@ -26,8 +25,7 @@ interface Props {
 const Perk: React.FC<Props> = ({
   teachableType,
   className = "",
-  defaultName = "perkname",
-  defaultDescription = "",
+  defaultPerk = { name: "perkname", description: "" },
   defaultShowcase = false,
   horizontally = false,
   iconCenter = true,
@@ -35,12 +33,13 @@ const Perk: React.FC<Props> = ({
   id,
 }) => {
   const [editing, setEditing] = useState<boolean>(!defaultShowcase);
-  const [perk, setPerk] = useState({
-    name: defaultName,
-    description: defaultDescription,
-  });
+  const [perk, setPerk] = useState(defaultPerk);
 
   const [img, setImg] = useState("");
+
+  useEffect(() => {
+    setPerk(defaultPerk);
+  }, [defaultPerk]);
 
   return (
     <div
