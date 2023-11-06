@@ -8,7 +8,7 @@ import Perk from "@/components/Perk";
 import { Heading, Text } from "@/components/RichText";
 import Spacing from "@/components/Spacing";
 import Toggle from "@/components/Toggle";
-import { savePerks } from "@/helpers/io";
+import { writeProps } from "@/helpers/io";
 import React, { useEffect, useState } from "react";
 
 const PerkCreator: React.FC = () => {
@@ -43,10 +43,12 @@ const PerkCreator: React.FC = () => {
         settings
       </Text>
       <div className="flex flex-col items-end md:flex-row md:justify-evenly space-y-2 mt-2 md:mt-0">
-        <Toggle
+        {/**
+         * <Toggle
           text="Horizontally Aligned"
           onChange={(e) => setHorizontally(!horizontally)}
         />
+         */}
         <Toggle
           text="Teachable Perks"
           onChange={(e) => setTeachable(!teachable)}
@@ -108,7 +110,7 @@ const PerkCreator: React.FC = () => {
             </svg>
           }
           text="Download"
-          onClick={() => {setAnchorProps(savePerks(perks.map((perk: any) => perk.props.id)))}}
+          onClick={() => {setAnchorProps(writeProps(perks.map((perk: any) => perk.props.id)))}}
         />
       </a>
     </div>
