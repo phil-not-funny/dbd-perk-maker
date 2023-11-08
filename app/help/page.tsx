@@ -66,7 +66,7 @@ export default function Help({}) {
         All of the Markdown components have been automatically designed for Dbd
         Perks.
         <br />
-        Content is subject to change as we update the site to make it easier for
+        Content is subject to change as I update the site to make it easier for
         users to create their own perks.
       </Text>
       <Spacing space={12} />
