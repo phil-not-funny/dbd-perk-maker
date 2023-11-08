@@ -134,6 +134,7 @@ export default function Footer() {
           </div>
         </div>
       </Grid>
+      <span className="text-base mt-4">I do not own the rights to Dead By Daylight, this is merely a fan-made application.</span>
     </div>
   );
 }

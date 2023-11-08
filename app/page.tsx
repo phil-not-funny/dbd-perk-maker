@@ -26,7 +26,11 @@ export default function Home() {
         <CardButton href="/creator/icon" title="Icon Creator" description="UNDER CONSTRUCTION! Create a single Dead By Daylight icon for killer Power or Perks. No matter if Survivor or Killer." className="h-48" />
       </Grid>
       <Spacing space={24} />
-      <Link href="/help"><Text center defaultSize="lg" wideScreenSize="xl" className="hover:underline hover:underline-offset-2 transition-all duration-150 ease-in-out">Need help designing perks?</Text></Link>
+      <Text center defaultSize="lg" wideScreenSize="xl">Need help designing perks?</Text>
+      <Link href="/help"><Text center defaultSize="base" wideScreenSize="lg" className="text-slate-300 hover:underline hover:underline-offset-2 transition-all duration-150 ease-in-out">Check out the Help Page</Text></Link>
+      <Spacing space={6} />
+      <Text center defaultSize="lg" wideScreenSize="xl">Not looking for anything specific?</Text>
+      <Link href="/creator/markdown"><Text center defaultSize="base" wideScreenSize="lg" className="text-slate-300 hover:underline hover:underline-offset-2 transition-all duration-150 ease-in-out">Check out the MKD Editor</Text></Link>
     </>
   );
 }

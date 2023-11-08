@@ -40,7 +40,7 @@ While running, press the _active ability button 2_ to run with knees high for 0.
 - Gain a random rare item, with random add-ons and drop any held item.
 
 _The same effect cannot happen twice in a row_<br><br>_Dramaturgy_ causes **exhaustion** for <span class="purple">40 seconds</span>. Can't be used while exhausted.<br><br>
-<span class="beige"> Exposed Survivors will be downed by basic attacks even if uninjured.<br/>Haste increases Survivor movement speed.<br/>Exhaustion prevents Survivors form activating other perks that cause Exhaustion.</span>
+<span class="beige"> **Exposed** Survivors will be downed by basic attacks even if uninjured.<br/>**Haste** increases Survivor movement speed.<br/>**Exhaustion** prevents Survivors from activating other perks that cause Exhaustion.</span>
 
 <br>
 
@@ -85,7 +85,11 @@ export default function Help({}) {
         Example Perk
       </Heading>
       <Spacing space={12} />
-      <Perk className="w-full md:w-1/3 md:mx-auto" defaultName="dramaturgie" defaultDescription={dramaturgie} defaultShowcase />
+      <Perk
+        className="w-full md:w-1/3 md:mx-auto"
+        defaultPerk={{ name: "dramaturgie", description: dramaturgie }}
+        defaultShowcase
+      />
     </>
   );
 }

@@ -29,7 +29,7 @@ export default function RootLayout({
               initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: 1, scale: 1, x: "100" }}
               transition={{ duration: 1, type: "spring", stiffness: 20 }}
-              className="max-w-7xl"
+              className="max-w-7xl w-full"
             >
               {children}
             </motion.div>
