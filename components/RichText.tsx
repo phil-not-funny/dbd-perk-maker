@@ -1,6 +1,18 @@
 import React from "react";
 
-type TextSizes = "sm" | "base" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl";
+type TextSizes =
+  | "sm"
+  | "base"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl"
+  | "7xl"
+  | "8xl"
+  | "9xl";
 
 interface TextProps {
   uppercase?: boolean;
@@ -13,6 +25,7 @@ interface TextProps {
   tracking?: "wide" | "wider" | "widest" | "normal";
   center?: boolean;
   id?: string;
+  onClick?: () => void;
 }
 
 export const Text: React.FC<TextProps> = ({
@@ -20,15 +33,17 @@ export const Text: React.FC<TextProps> = ({
   center,
   uppercase,
   bold,
-  className = '',
+  className = "",
   defaultSize = "base",
   wideScreenSize = defaultSize,
   width = "full",
   tracking = "normal",
-  id
+  id,
+  onClick,
 }) => {
   return (
     <p
+      onClick={onClick}
       className={`text-white ${
         center ? "text-center" : "text-left"
       } text-${defaultSize} sm:text-${wideScreenSize} sm:tracking-${tracking} ${
@@ -56,10 +71,14 @@ export const Heading: React.FC<HeadingProps> = ({
   uppercase,
   defaultSize = "base",
   wideScreenSize = defaultSize,
-  className = ''
+  className = "",
 }) => {
   return (
-    <h1 className={`text-center text-white tracking-wider sm:tracking-widest font-semibold text-${defaultSize} sm:text-${wideScreenSize} ${uppercase ? 'uppercase' : ''} ${className}`}>
+    <h1
+      className={`text-center text-white tracking-wider sm:tracking-widest font-semibold text-${defaultSize} sm:text-${wideScreenSize} ${
+        uppercase ? "uppercase" : ""
+      } ${className}`}
+    >
       {children}
     </h1>
   );

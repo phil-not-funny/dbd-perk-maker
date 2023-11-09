@@ -27,7 +27,7 @@ const Grid: React.FC<Props> = ({ children, center, border, chain, cols, children
     >
       {children.map((child: any) => (
         <li
-          key={child.props?.id}
+          key={child?.props?.id}
           className={`col-span-1 ${
             border && "bg-dark rounded-lg shadow divide-y divide-gray-200"
           }`}
